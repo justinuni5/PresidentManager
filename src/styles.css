@@ -1,0 +1,1255 @@
+:root {
+  --sfondo: #0d1117;
+  --pannello: #161b22;
+  --pannello-chiaro: #1f2733;
+  --bordo: #2d3846;
+  --testo: #e6edf3;
+  --muto: #8b98a9;
+  --accento: #16a34a;
+  --accento-chiaro: #22c55e;
+  --accento-testo: #ffffff;
+  --pericolo: #ef4444;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 78% -15%, rgba(34, 197, 94, .08), transparent 34rem),
+    radial-gradient(circle at 8% 90%, rgba(56, 189, 248, .045), transparent 30rem),
+    var(--sfondo);
+  background-attachment: fixed;
+  color: var(--testo);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4 { margin: 0 0 10px; }
+h3 { font-size: 15px; }
+.muto { color: var(--muto); font-weight: 400; font-size: 12.5px; }
+
+.btn {
+  background: var(--pannello-chiaro);
+  color: var(--testo);
+  border: 1px solid var(--bordo);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 13.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.btn-compatto { padding: 5px 10px; font-size: 12.5px; }
+
+.link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.link:hover span { text-decoration: underline; }
+
+.icona { flex-shrink: 0; }
+.btn:hover:not(:disabled) { border-color: var(--muto); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primario { background: var(--accento); border-color: var(--accento); color: var(--accento-testo); font-weight: 700; }
+.menu-impostazioni { margin: 0 0 16px; text-align: left; }
+.menu-impostazioni summary { cursor: pointer; font-weight: 700; padding: 8px 0; }
+.menu-impostazioni label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 8px 0; }
+.menu-impostazioni select { min-width: 150px; }
+.btn-primario:hover:not(:disabled) { background: var(--accento-chiaro); }
+.btn-grande { padding: 12px 20px; font-size: 15px; width: 100%; }
+.btn-pericolo-testo { background: none; border: none; color: var(--pericolo); font-size: 12.5px; }
+
+.card {
+  background: linear-gradient(145deg, rgba(31, 39, 51, .72), rgba(22, 27, 34, .96) 58%);
+  border: 1px solid var(--bordo);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .13);
+}
+
+/* ---- Menu principale ---- */
+.menu-principale {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(22, 163, 74, 0.18), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(22, 100, 220, 0.12), transparent 50%),
+    var(--sfondo);
+}
+.menu-box { text-align: center; width: min(420px, 92vw); }
+.menu-logo { font-size: 56px; }
+.menu-titolo { letter-spacing: 4px; font-size: 30px; margin: 8px 0 4px; }
+.menu-sottotitolo { color: var(--muto); margin: 0 0 28px; }
+.menu-bottoni { display: flex; flex-direction: column; gap: 12px; }
+.menu-versione { color: var(--muto); font-size: 11.5px; margin-top: 26px; }
+
+/* ---- Nuova carriera ---- */
+.nuova-carriera { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.nc-testata { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.nc-testata h2 { margin: 0; font-size: 18px; }
+.nc-colonne { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; align-items: start; }
+.nc-lega { margin: 14px 0 6px; font-size: 14px; }
+.nc-riga {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; text-align: left;
+  background: var(--pannello); border: 1px solid var(--bordo);
+  border-radius: 10px; padding: 8px 12px; margin-bottom: 6px;
+  color: var(--testo); cursor: pointer;
+}
+.nc-riga:hover { border-color: var(--muto); }
+.nc-riga.attiva { border-color: var(--accento); background: rgba(22, 163, 74, 0.08); }
+.nc-riga-nome { flex: 1; display: flex; flex-direction: column; }
+.nc-riga-dati { display: flex; flex-direction: column; align-items: flex-end; font-size: 12.5px; }
+.nc-dettaglio { background: var(--pannello); border: 1px solid var(--bordo); border-radius: 12px; padding: 18px; position: sticky; top: 16px; display: flex; flex-direction: column; gap: 12px; }
+.nc-vuoto { color: var(--testo); }
+.nc-anteprima { text-align: center; }
+.nc-anteprima h3 { margin: 10px 0 2px; }
+.nc-statistiche { display: flex; justify-content: center; gap: 20px; margin-top: 12px; }
+.nc-statistiche div { display: flex; flex-direction: column; }
+.nc-paesi { padding: 14px; border-bottom: 1px solid var(--bordo); }
+.nc-paesi > h3 { margin: 0 0 10px; }
+.nc-paese-toggle { display: flex; align-items: center; gap: 9px; margin: 8px 0; cursor: pointer; }
+.nc-paese-toggle > span { display: flex; flex-direction: column; }
+.nc-paese-toggle input:disabled + span { opacity: .55; }
+.nc-paesi > p { font-size: 12px; line-height: 1.4; }
+.campo { display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; color: var(--muto); }
+.campo input, .campo select {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 10px; font-size: 14px;
+}
+
+/* ---- Gestione club: sponsor, stadio, allenamento, finanze, armonia ---- */
+.gestione-pagina { display: flex; flex-direction: column; gap: 14px; }
+.gestione-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.sponsor-riepilogo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sponsor-riepilogo > div { display: flex; flex-direction: column; gap: 5px; padding: 17px 19px; border: 1px solid var(--bordo); border-radius: 11px; background: linear-gradient(135deg, var(--pannello-chiaro), var(--pannello)); }
+.sponsor-riepilogo span { color: var(--muto); font-size: 11px; text-transform: uppercase; letter-spacing: .8px; }
+.sponsor-riepilogo strong { font-size: clamp(19px, 2.2vw, 27px); line-height: 1.1; }
+.sponsor-riepilogo small { color: var(--muto); font-size: 11px; }
+.sponsor-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 11px; margin-top: 12px; }
+.sponsor-card { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 16px; border: 1px solid var(--bordo); border-radius: 11px; background: var(--pannello-chiaro); }
+.sponsor-card.sponsor-offerta { border-top: 3px solid var(--accento-chiaro); }
+.sponsor-card.indisponibile { opacity: .6; }
+.sponsor-card-testa { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.sponsor-card-testa strong { font-size: 15px; }
+.sponsor-stato { color: var(--accento-chiaro); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.sponsor-slot-lista { display: flex; flex-wrap: wrap; gap: 5px; }
+.sponsor-slot-lista span { padding: 4px 7px; border: 1px solid var(--bordo); border-radius: 5px; color: var(--muto); font-size: 11px; }
+.sponsor-cifra { display: flex; align-items: baseline; gap: 5px; }
+.sponsor-cifra b { font-size: 22px; letter-spacing: -.5px; }
+.sponsor-cifra small { color: var(--muto); }
+.sponsor-dettagli { display: flex; justify-content: space-between; gap: 8px; color: var(--muto); font-size: 11px; }
+.sponsor-card .btn { margin-top: auto; }
+@media (max-width: 700px) { .sponsor-riepilogo { grid-template-columns: 1fr; } }
+.gestione-elemento { display: flex; flex-direction: column; gap: 7px; padding: 12px; border: 1px solid var(--bordo); border-radius: 9px; background: var(--pannello-chiaro); }
+.gestione-riga { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--bordo); }
+.gestione-riga:last-child { border-bottom: 0; }
+.gestione-riga > span { display: flex; flex-direction: column; gap: 2px; }
+.gestione-statistiche { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 12px; }
+.gestione-statistiche > div { display: flex; flex-direction: column; gap: 4px; }
+.gestione-statistiche span { color: var(--muto); font-size: 12px; }
+.gestione-statistiche strong { font-size: 19px; }
+.gestione-form { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; }
+.gestione-form h3, .gestione-form p { flex-basis: 100%; }
+.gestione-form select { min-width: 210px; background: var(--pannello-chiaro); color: var(--testo); border: 1px solid var(--bordo); border-radius: 8px; padding: 9px; }
+.gestione-due-colonne { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pillola { padding: 3px 7px; border-radius: 999px; background: rgba(22, 163, 74, .18); color: var(--accento-chiaro); font-size: 11px; }
+.positivo { color: #4ade80; }
+.negativo { color: #fb7185; }
+.armonia-valore { color: var(--accento-chiaro); font-size: 24px; }
+.rosa-schede { display: flex; gap: 4px; margin-bottom: 14px; border-bottom: 1px solid var(--bordo); }
+.rosa-scheda { position: relative; border: 0; background: none; color: var(--muto); padding: 11px 16px; font-weight: 700; cursor: pointer; }
+.rosa-scheda::after { content: ''; position: absolute; left: 14px; right: 14px; bottom: -1px; height: 2px; background: transparent; border-radius: 2px; }
+.rosa-scheda:hover { color: var(--testo); }
+.rosa-scheda.attiva { color: var(--testo); }
+.rosa-scheda.attiva::after { background: var(--accento-chiaro); box-shadow: 0 0 12px rgba(34, 197, 94, .5); }
+.rosa-card { overflow-x: auto; }
+.stato-promessa { text-transform: capitalize; }
+.stato-promessa.mantenuta { color: #4ade80; }
+.stato-promessa.mancata { color: #fb7185; }
+.finanza-barra { display: grid; grid-template-columns: 110px 1fr 100px; align-items: center; gap: 10px; margin: 9px 0; text-transform: capitalize; }
+.finanza-barra i { display: block; height: 9px; border-radius: 8px; }
+.finanza-barra i.entrata { background: #22c55e; }
+.finanza-barra i.uscita { background: #ef4444; }
+.finanza-barra strong { text-align: right; }
+.finanza-lista > div { display: grid; grid-template-columns: 110px 1fr 110px; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--bordo); }
+.finanza-lista strong { text-align: right; }
+.finanza-lista span:nth-child(2) { display: flex; flex-direction: column; gap: 2px; }
+.finanza-lista span:nth-child(2) small { color: var(--muto); font-size: 10px; text-transform: uppercase; letter-spacing: .7px; }
+.pagina-eyebrow { display: block; color: var(--accento-chiaro); font-size: 10px; font-weight: 800; letter-spacing: 1.7px; margin-bottom: 4px; }
+.finanze-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.finanza-kpi { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 5px; padding: 16px; background: linear-gradient(145deg, rgba(31, 39, 51, .9), rgba(18, 23, 30, .98)); border: 1px solid var(--bordo); border-radius: 12px; box-shadow: 0 12px 28px rgba(0,0,0,.16); }
+.finanza-kpi::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #475569; }
+.finanza-kpi.principale::before { background: var(--accento-chiaro); }
+.finanza-kpi > span { color: var(--muto); font-size: 11px; text-transform: uppercase; letter-spacing: .65px; }
+.finanza-kpi > strong { font-size: clamp(18px, 2vw, 25px); letter-spacing: -.5px; }
+.finanza-kpi > small { color: var(--muto); font-size: 11px; }
+.finanze-griglia-principale { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(250px, .8fr); gap: 14px; }
+.card-testata { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.card-testata h3 { margin-bottom: 2px; }
+.card-testata p { margin: 0; }
+.finanze-trend { padding: 5px 8px; border: 1px solid currentColor; border-radius: 999px; font-size: 11px; white-space: nowrap; }
+.finanze-grafico-wrap { width: 100%; min-height: 220px; margin-top: 6px; }
+.finanze-grafico { display: block; width: 100%; height: auto; overflow: visible; }
+.finanze-griglia { stroke: rgba(148, 163, 184, .14); stroke-width: 1; }
+.finanze-linea { fill: none; stroke: #4ade80; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 5px rgba(34, 197, 94, .45)); }
+.finanze-punto { fill: var(--pannello); stroke: #86efac; stroke-width: 2.5; }
+.finanze-asse { fill: var(--muto); font-size: 10px; text-transform: capitalize; }
+.pallino { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin: 0 3px 0 8px; }
+.pallino.entrata { background: #22c55e; }
+.pallino.uscita { background: #fb7185; }
+.flussi-mensili { display: flex; align-items: stretch; gap: 6px; height: 190px; padding-top: 14px; overflow-x: auto; }
+.flusso-mese { min-width: 34px; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.flusso-colonne { height: 150px; width: 100%; display: flex; align-items: flex-end; justify-content: center; gap: 3px; border-bottom: 1px solid var(--bordo); }
+.flusso-colonne i { display: block; width: min(10px, 38%); min-height: 3px; border-radius: 3px 3px 0 0; }
+.flusso-colonne .entrata { background: linear-gradient(#4ade80, #15803d); }
+.flusso-colonne .uscita { background: linear-gradient(#fb7185, #be123c); }
+.flusso-mese > span { color: var(--muto); font-size: 10px; text-transform: capitalize; }
+.uscite-ripartizione { display: flex; align-items: center; gap: 24px; padding: 14px 4px 4px; }
+.finanze-ciambella { width: 142px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; box-shadow: 0 0 24px rgba(0,0,0,.2); }
+.finanze-ciambella::before { content: ''; grid-area: 1 / 1; width: 70%; aspect-ratio: 1; border-radius: 50%; background: var(--pannello); box-shadow: inset 0 0 12px rgba(0,0,0,.28); }
+.finanze-ciambella > div { grid-area: 1 / 1; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.finanze-ciambella span { color: var(--muto); font-size: 10px; text-transform: uppercase; }
+.finanze-ciambella strong { font-size: 14px; }
+.finanze-legenda { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 7px; }
+.finanze-legenda > div { display: grid; grid-template-columns: 9px minmax(0, 1fr) auto; align-items: center; gap: 7px; font-size: 12px; text-transform: capitalize; }
+.finanze-legenda i { width: 8px; height: 8px; border-radius: 2px; }
+.finanza-categoria { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(45, 56, 70, .55); text-transform: capitalize; }
+.finanza-categoria:last-child { border-bottom: 0; }
+.campo input[type='color'] { padding: 2px; height: 38px; cursor: pointer; }
+.nc-colori { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.nc-editor-toggle { display: flex; gap: 10px; align-items: flex-start; background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+.nc-editor-toggle input { margin-top: 3px; }
+.nc-editor-toggle span { display: flex; flex-direction: column; gap: 2px; }
+
+/* ---- Shell di gioco ---- */
+.shell { display: grid; grid-template-columns: 230px 1fr; min-height: 100vh; }
+.sidebar {
+  background: var(--pannello); border-right: 1px solid var(--bordo);
+  padding: 16px 12px; display: flex; flex-direction: column; gap: 14px;
+  position: sticky; top: 0; height: 100vh;
+}
+.sidebar-club { display: flex; align-items: center; gap: 10px; padding: 0 6px; }
+.sidebar-club div { display: flex; flex-direction: column; line-height: 1.25; }
+.sidebar nav { display: flex; flex-direction: column; gap: 2px; flex: 1; overflow-y: auto; min-height: 0; }
+.nav-voce {
+  display: flex; align-items: center; gap: 9px;
+  background: none; border: none; color: var(--testo);
+  padding: 9px 10px; border-radius: 8px; cursor: pointer; text-align: left; font-size: 13.5px;
+}
+.nav-voce .nav-wip { margin-left: auto; }
+.nav-voce:hover { background: var(--pannello-chiaro); }
+.nav-voce.attiva { background: rgba(22, 163, 74, 0.15); color: var(--accento-chiaro); font-weight: 600; }
+.nav-wip { font-size: 9.5px; color: var(--muto); border: 1px solid var(--bordo); border-radius: 4px; padding: 1px 4px; }
+.sidebar-fondo { display: flex; flex-direction: column; gap: 8px; padding: 0 6px; }
+.contenuto { padding: 20px; max-width: 1050px; width: 100%; margin: 0 auto; }
+
+/* ---- Dashboard ---- */
+.dash-griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.dash-notizie { grid-column: 1 / -1; }
+.dash-partita { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.dash-vs { display: flex; align-items: center; gap: 14px; }
+.dash-squadra-vs { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.dash-vs-x { color: var(--muto); }
+.dash-club-dati { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.dash-club-dati div { display: flex; flex-direction: column; }
+.notizia { border-top: 1px solid var(--bordo); padding: 10px 0 4px; }
+.notizia:first-of-type { border-top: none; }
+.notizia header { display: flex; justify-content: space-between; gap: 10px; }
+.notizia p { margin: 4px 0 0; color: var(--muto); }
+
+/* ---- Tabelle ---- */
+.tabella { width: 100%; border-collapse: collapse; }
+.tabella th {
+  text-align: left; color: var(--muto); font-size: 11.5px; text-transform: uppercase;
+  letter-spacing: 0.4px; padding: 6px 8px; border-bottom: 1px solid var(--bordo);
+}
+.tabella th.ordinabile { cursor: pointer; user-select: none; }
+.tabella td { padding: 8px; border-bottom: 1px solid rgba(45, 56, 70, 0.5); }
+.tabella tbody tr { cursor: pointer; }
+.tabella tbody tr:hover { background: var(--pannello-chiaro); }
+.riga-utente { background: rgba(22, 163, 74, 0.1); }
+.cella-squadra { display: flex; align-items: center; gap: 8px; }
+.suggerimento { margin: 10px 0 0; }
+
+.ruolo { font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 6px; }
+.ruolo-POR { background: #7c3aed33; color: #c4b5fd; }
+.ruolo-DIF { background: #2563eb33; color: #93c5fd; }
+.ruolo-CEN { background: #16a34a33; color: #86efac; }
+.ruolo-ATT { background: #dc262633; color: #fca5a5; }
+
+/* ---- Profilo giocatore ---- */
+.profilo-testata { display: flex; justify-content: space-between; margin-bottom: 14px; }
+.profilo-editor-azioni { display: flex; gap: 8px; }
+.profilo-corpo { display: grid; grid-template-columns: 320px 1fr; gap: 16px; align-items: start; }
+.profilo-anagrafica { text-align: center; }
+.profilo-anagrafica h3 { margin: 10px 0 2px; }
+.profilo-dati { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; text-align: left; }
+.profilo-dati div { display: flex; flex-direction: column; }
+.attributo { display: grid; grid-template-columns: 150px 1fr 34px; align-items: center; gap: 10px; padding: 6px 0; }
+.attributo input {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 6px;
+  color: var(--testo); padding: 5px 8px; width: 80px; grid-column: 2 / 4;
+}
+.barra { height: 8px; background: var(--pannello-chiaro); border-radius: 4px; overflow: hidden; }
+.barra-riempimento { display: block; height: 100%; border-radius: 4px; }
+.profilo-nascosti-titolo { margin-top: 16px; color: #eab308; }
+
+/* ---- Calendario ---- */
+.cal-selettori { display: flex; gap: 10px; margin-bottom: 14px; }
+.cal-selettori select {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 10px; font-size: 13.5px;
+}
+.cal-colonne { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; align-items: start; }
+.cal-partita {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px;
+  padding: 8px 6px; border-bottom: 1px solid rgba(45, 56, 70, 0.5); border-radius: 6px;
+}
+.cal-casa { display: flex; align-items: center; gap: 8px; }
+.cal-fuori { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+.cal-risultato { color: var(--muto); font-weight: 700; min-width: 44px; text-align: center; }
+
+.in-costruzione { text-align: center; padding: 60px 20px; color: var(--muto); }
+.in-costruzione h3 { color: var(--testo); margin-top: 8px; }
+
+/* ---- Shell: colonna destra con barra superiore ---- */
+.shell-destra { display: flex; flex-direction: column; min-width: 0; }
+.topbar {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--pannello); border-bottom: 1px solid var(--bordo);
+  padding: 10px 20px;
+  position: sticky; top: 0; z-index: 10;
+  transition: background 0.3s;
+}
+.topbar-urgente {
+  background: #5b1414;
+  border-bottom-color: var(--pericolo);
+}
+.topbar-spazio { flex: 1; }
+.topbar-data { color: var(--muto); font-size: 12.5px; }
+.topbar-avviso {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: #fecaca; font-weight: 600; font-size: 13px;
+  background: none; border: none; cursor: pointer; padding: 6px 8px; border-radius: 8px;
+}
+.topbar-avviso:hover { background: rgba(255, 255, 255, 0.08); text-decoration: underline; }
+
+/* ---- Menu: logo ---- */
+.menu-logo { color: var(--accento-chiaro); }
+
+/* ---- Nuova carriera: sezione presidente ---- */
+.nc-separatore { display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--bordo); padding-top: 12px; }
+.nc-avviso-campi { margin: -4px 0 0; text-align: center; }
+
+/* ---- Calendario verticale ---- */
+.cal-striscia { display: flex; flex-direction: column; gap: 8px; padding: 6px 2px 10px; }
+.cal-card {
+  width: 100%;
+  display: grid; grid-template-columns: 145px 38px minmax(180px, 1fr) 100px 70px; align-items: center; gap: 10px;
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 10px;
+  padding: 9px 12px; color: var(--testo); cursor: pointer; font-size: 12.5px; text-align: left;
+}
+.cal-card:hover { border-color: var(--muto); }
+.cal-card-nome { font-weight: 600; line-height: 1.2; }
+.cal-card-luogo { font-size: 11px; border-radius: 4px; padding: 1px 6px; }
+.cal-card-luogo.casa { background: rgba(22, 163, 74, 0.2); color: #86efac; }
+.cal-card-luogo.trasferta { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+.cal-card-risultato { font-size: 15px; text-align: right; }
+
+.stelle-giovane { display: inline-flex; gap: 2px; font-size: 17px; letter-spacing: 1px; white-space: nowrap; }
+.stelle-giovane .attuale { color: #facc15; }
+.stelle-giovane .potenziale { color: transparent; -webkit-text-stroke: 1px #facc15; }
+.stelle-giovane .fuori-potenziale { color: rgba(148, 163, 184, 0.2); }
+.armonia-incorporata { margin-top: 16px; }
+
+/* ---- Centro Sviluppo a fasce ---- */
+.fasce { display: flex; flex-direction: column; gap: 16px; }
+.centro-sviluppo { display: flex; flex-direction: column; gap: 16px; }
+.fascia-tabs { display: flex; gap: 6px; }
+.fascia-tab {
+  background: var(--pannello); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 18px; cursor: pointer; font-size: 13.5px; font-weight: 600;
+}
+.fascia-tab:hover { border-color: var(--muto); }
+.fascia-tab.attiva { background: rgba(22, 163, 74, 0.15); border-color: var(--accento); color: var(--accento-chiaro); }
+.cs-tattica { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
+.cs-tattica select {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 10px; font-size: 14px;
+}
+.cs-tattica p { flex: 1; min-width: 220px; margin: 0; }
+
+/* ---- Club ---- */
+.club { display: flex; flex-direction: column; gap: 16px; }
+.club-griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.club-storico { grid-column: 1 / -1; }
+.club-obiettivo { font-size: 18px; font-weight: 700; margin: 4px 0 8px; }
+.club-morale { display: grid; grid-template-columns: 70px 1fr 34px; align-items: center; gap: 10px; padding: 7px 0; }
+.barra-morale { height: 10px; }
+.club-trofeo { display: flex; align-items:center; gap:9px; padding: 7px 0; border-bottom: 1px solid rgba(45, 56, 70, 0.5); }
+.club-trofeo > strong { flex:1; }
+
+.dash-classifica { grid-column: 1 / -1; }
+
+/* ---- Profilo: gruppi attributi ---- */
+.gruppi-attributi { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+.profilo-squadra { margin-top: 6px; display: flex; justify-content: center; }
+.profilo-medie {
+  display: flex; justify-content: center; gap: 18px;
+  border-top: 1px solid var(--bordo); margin-top: 14px; padding-top: 12px;
+}
+.profilo-medie div { display: flex; flex-direction: column; }
+.card-nascosti { border-color: #a16207; }
+.card-nascosti h4 { color: #eab308; }
+
+/* ---- Campionato ---- */
+.campionato { display: flex; flex-direction: column; gap: 16px; }
+.campionato-titolo { margin: 4px 0 10px; }
+.mini-tabelle { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.mini-riga {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 0; border-bottom: 1px solid rgba(45, 56, 70, 0.5);
+}
+.mini-riga-nome { flex: 1; display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.cal-partita { cursor: pointer; }
+.cal-partita:hover { background: var(--pannello-chiaro); }
+
+/* ---- Dettaglio squadra ---- */
+.squadra-dettaglio { display: flex; flex-direction: column; gap: 16px; }
+.squadra-testata { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.squadra-testata-info h2 { margin: 0 0 4px; }
+.squadra-testata-dati { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-left: auto; }
+.squadra-testata-dati div { display: flex; flex-direction: column; }
+
+/* ---- Partita live ---- */
+.live { display: flex; flex-direction: column; gap: 16px; }
+.live-testata { text-align: center; }
+.live-scontro { display: flex; align-items: center; justify-content: center; gap: 24px; margin: 16px 0 20px; }
+.live-lato { display: flex; align-items: center; gap: 12px; font-size: 16px; }
+.live-punteggio { font-size: 34px; font-weight: 800; min-width: 110px; }
+.live-colonne { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.live-formazione-testata { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.live-titolare { display: flex; align-items: center; gap: 10px; padding: 5px 0; border-bottom: 1px solid rgba(45, 56, 70, 0.5); }
+.live-titolare span:nth-child(2) { flex: 1; }
+.live-eventi { max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+.live-evento { padding: 7px 10px; border-radius: 8px; background: var(--pannello-chiaro); font-size: 13.5px; }
+.live-minuto { font-weight: 700; color: var(--muto); margin-right: 4px; }
+.live-evento-gol { background: rgba(22, 163, 74, 0.22); border-left: 3px solid var(--accento-chiaro); font-weight: 600; }
+.live-evento-palo { border-left: 3px solid #eab308; }
+.live-evento-parata { border-left: 3px solid #38bdf8; }
+.live-evento-giallo { border-left: 3px solid #facc15; }
+.live-evento-rosso { background: rgba(239, 68, 68, 0.18); border-left: 3px solid var(--pericolo); font-weight: 600; }
+.live-evento-infortunio { border-left: 3px solid #fb923c; }
+.live-evento-var { border-left: 3px solid #a78bfa; }
+.live-evento-cambio { border-left: 3px solid #60a5fa; color: #bfdbfe; }
+.live-evento-intervallo {
+  background: none; border: 1px dashed var(--bordo); text-align: center;
+  color: var(--muto); font-weight: 600;
+}
+
+.topbar-matchday { background: #14431f; border-bottom-color: var(--accento); }
+
+/* ---- Ricerca globale ---- */
+.ricerca {
+  position: relative; display: flex; align-items: center; gap: 8px;
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  padding: 6px 10px; width: min(480px, 42vw); color: var(--muto);
+}
+.ricerca input {
+  background: none; border: none; outline: none; color: var(--testo);
+  font-size: 13px; width: 100%;
+}
+.ricerca-risultati {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 40;
+  background: var(--pannello); border: 1px solid var(--bordo); border-radius: 10px;
+  overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  max-height: 340px; overflow-y: auto;
+}
+.ricerca-riga {
+  display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left;
+  background: none; border: none; border-bottom: 1px solid rgba(45, 56, 70, 0.5);
+  color: var(--testo); padding: 9px 12px; cursor: pointer; font-size: 13px;
+}
+.ricerca-riga:hover { background: var(--pannello-chiaro); }
+.ricerca-tipo {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--accento-chiaro); min-width: 74px;
+}
+.ricerca-titolo { font-weight: 600; }
+.ricerca-vuota { padding: 12px; }
+
+/* ---- Campo SVG e tattica ---- */
+.campo-svg { width: 100%; height: auto; border-radius: 10px; display: block; }
+.tattica-colonne { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; align-items: start; }
+.tattica-campo { padding: 12px; }
+.tattica-pannello { display: flex; flex-direction: column; gap: 16px; }
+.tattica-slot { cursor: pointer; }
+.tattica-slot:hover circle { filter: brightness(1.25); }
+.tattica-panchina { display: flex; flex-direction: column; max-height: 420px; overflow-y: auto; }
+.tattica-riserva {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 8px; border-radius: 8px; cursor: grab;
+  border-bottom: 1px solid rgba(45, 56, 70, 0.5);
+}
+.tattica-riserva:hover { background: var(--pannello-chiaro); }
+.tattica-riserva.attiva { outline: 1px solid var(--accento); background: rgba(22, 163, 74, 0.1); }
+.tattica-riserva.infortunato { opacity: 0.5; cursor: not-allowed; }
+.tattica-riserva-nome { flex: 1; font-weight: 600; }
+
+/* Identità tattica e report sinergia (M2) */
+.identita-filosofia { margin: 10px 0 8px; font-style: italic; }
+.identita-punti { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12.5px; }
+.identita-punti ul { margin: 4px 0 0; padding-left: 16px; }
+.identita-punti li { margin-bottom: 2px; }
+.identita-forza { color: #4ade80; }
+.identita-deboli { color: #fca5a5; }
+.sinergia-voci { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.sinergia-voce { display: flex; gap: 8px; align-items: baseline; font-size: 13px; }
+.sinergia-icona { font-weight: 700; flex-shrink: 0; }
+.sinergia-ok .sinergia-icona { color: #4ade80; }
+.sinergia-warn .sinergia-icona { color: #fbbf24; }
+.sinergia-dettaglio { font-size: 12px; }
+
+/* ---- Match view 2D ---- */
+.live-corpo { grid-template-columns: 1.05fr 1fr; align-items: start; }
+.live-campo { padding: 12px; }
+.campo-2d-minuto { paint-order: stroke; stroke: rgba(0, 0, 0, 0.5); stroke-width: 0.8px; }
+.live-punteggio-blocco { display: flex; flex-direction: column; align-items: center; min-width: 110px; }
+.live-scelta { display: flex; flex-direction: column; gap: 10px; max-width: 340px; margin: 0 auto; }
+.live-cambi-selettori { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+.live-cambi-selettori select {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 10px; font-size: 13px; min-width: 220px;
+}
+.live-avviso-infortunio { color: #fca5a5; font-weight: 600; margin: 10px 0 0; }
+
+/* ---- Ufficio del presidente ---- */
+.ufficio { display: flex; flex-direction: column; gap: 16px; max-width: 760px; margin: 0 auto; }
+.ufficio-testata {
+  display: flex; align-items: center; gap: 16px;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(22, 163, 74, 0.16), transparent 55%),
+    var(--pannello);
+}
+.ufficio-testata h2 { margin: 0 0 4px; }
+.ufficio-previsione { color: var(--accento-chiaro); font-size: 15px; }
+.ufficio-obiettivo { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.ufficio-obiettivo select {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 9px 10px; font-size: 14px; max-width: 320px;
+}
+.ufficio-ambizione { margin: 0; font-weight: 600; font-size: 13px; }
+.ufficio-ambizione-inlinea { color: var(--muto); }
+.ufficio-ambizione-ambizioso { color: #fbbf24; }
+.ufficio-ambizione-timido { color: #fca5a5; }
+.ufficio-discorsi { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.ufficio-discorso {
+  display: flex; flex-direction: column; gap: 5px; text-align: left;
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 10px;
+  color: var(--testo); padding: 12px; cursor: pointer; font-size: 13px;
+}
+.ufficio-discorso:hover { border-color: var(--muto); }
+.ufficio-discorso.attivo { border-color: var(--accento); background: rgba(22, 163, 74, 0.1); }
+.ufficio-discorso em { color: #cbd5e1; font-style: italic; }
+
+/* ---- Dashboard: pratica urgente ---- */
+.dash-urgente {
+  display: flex; align-items: center; gap: 16px; justify-content: space-between;
+  border-color: var(--pericolo); margin-bottom: 16px;
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.12), transparent 60%), var(--pannello);
+}
+.dash-urgente p { margin: 4px 0 0; }
+
+/* ---- Tattica: griglia e riepilogo ---- */
+.tattica-riepilogo { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.tattica-invalida { color: #fca5a5; font-size: 12.5px; font-weight: 600; }
+.tattica-azioni { display: flex; gap: 10px; align-items: center; margin-top: 12px; }
+
+/* ---- Ufficio: categorie obiettivo ---- */
+.ufficio-categorie { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.ufficio-categoria {
+  display: flex; flex-direction: column; gap: 3px; text-align: left;
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 10px;
+  color: var(--testo); padding: 10px 12px; cursor: pointer; font-size: 13px;
+}
+.ufficio-categoria:hover { border-color: var(--muto); }
+.ufficio-categoria.attiva { border-color: var(--accento); background: rgba(22, 163, 74, 0.1); }
+.ufficio-categoria-nome { font-weight: 700; }
+.badge-obiettivo {
+  align-self: flex-start; font-size: 10px; font-weight: 800; letter-spacing: 0.4px;
+  border-radius: 4px; padding: 1px 6px; text-transform: uppercase;
+}
+.badge-obiettivo.rischioso { background: rgba(251, 191, 36, 0.18); color: #fbbf24; }
+.badge-obiettivo.timido { background: rgba(239, 68, 68, 0.16); color: #fca5a5; }
+
+/* ---- Mercato ---- */
+.mercato { display: flex; flex-direction: column; gap: 16px; }
+.mercato-finestra { display: flex; align-items: baseline; gap: 14px; border-left: 4px solid var(--pericolo); }
+.mercato-finestra.aperta { border-left-color: var(--accento); }
+.mercato-offerte { border-color: var(--pericolo); }
+.mercato-offerta {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 10px 0; border-bottom: 1px solid rgba(45, 56, 70, 0.5);
+}
+.mercato-offerta-info { flex: 1; min-width: 200px; }
+.mercato-offerta-cifra { font-size: 16px; color: var(--accento-chiaro); }
+.mercato-offerta-azioni { display: flex; gap: 8px; }
+.mercato-filtri { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+.mercato-paginazione { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.mercato-paginazione > div { display: flex; gap: .5rem; }
+.mercato-filtri input[type='text'], .mercato-filtri input:not([type]) {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 10px; font-size: 13px; min-width: 180px;
+}
+.mercato-filtri select {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 10px; font-size: 13px;
+}
+.mercato-check { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--muto); cursor: pointer; }
+.badge-vivaio {
+  margin-left: 7px; font-size: 10px; font-weight: 700;
+  background: rgba(34, 197, 94, 0.15); color: #86efac;
+  border-radius: 4px; padding: 1px 5px;
+}
+.stelle { color: #fbbf24; letter-spacing: 1px; }
+
+/* ---- Profilo: tab ---- */
+.profilo-tabs { display: flex; gap: 4px; flex: 1; justify-content: center; }
+.profilo-tab {
+  background: none; border: 1px solid transparent; border-radius: 8px;
+  color: var(--muto); padding: 7px 16px; cursor: pointer; font-size: 13.5px; font-weight: 600;
+}
+.profilo-tab:hover { color: var(--testo); }
+.profilo-tab.attiva {
+  color: var(--accento-chiaro); background: rgba(22, 163, 74, 0.12); border-color: var(--accento);
+}
+.profilo-colonna { display: flex; flex-direction: column; gap: 16px; align-content: start; }
+.profilo-interessata {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid rgba(45, 56, 70, 0.5);
+}
+.badge-mercato {
+  margin-left: 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase;
+  background: rgba(56, 189, 248, 0.16); color: #7dd3fc;
+  border-radius: 4px; padding: 2px 6px; vertical-align: middle;
+}
+
+/* ---- Profilo: offerta ---- */
+.profilo-mercato { margin-top: 16px; }
+.profilo-offerta { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-top: 8px; }
+.profilo-offerta input {
+  background: var(--pannello-chiaro); border: 1px solid var(--bordo); border-radius: 8px;
+  color: var(--testo); padding: 8px 10px; font-size: 14px; width: 160px;
+}
+.esito-offerta { margin: 10px 0 0; font-weight: 600; }
+.esito-offerta.accettata { color: var(--accento-chiaro); }
+.esito-offerta.controfferta { color: #fbbf24; }
+.esito-offerta.rifiutata { color: #fca5a5; }
+
+/* ---- Staff ---- */
+.staff { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.staff-attuale, .staff-candidato {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 8px 0; border-bottom: 1px solid rgba(45, 56, 70, 0.5);
+}
+.staff-attuale { background: rgba(22, 163, 74, 0.06); border-radius: 8px; padding: 10px; }
+.staff-nome { flex: 1; min-width: 150px; }
+.staff-candidati { margin-top: 10px; display: flex; flex-direction: column; }
+.staff-vuoto { margin: 8px 0; }
+
+/* ---- Ruoli nel profilo ---- */
+.profilo-ruoli { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+.profilo-ruolo { font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 7px; }
+.profilo-ruolo.naturale { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+.profilo-ruolo.forte { background: rgba(234, 179, 8, 0.18); color: #fde68a; }
+
+.badge-infortunio {
+  margin-left: 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  background: rgba(239, 68, 68, 0.2); color: #fca5a5;
+  border-radius: 4px; padding: 1px 5px; vertical-align: middle;
+}
+.testo-infortunio { color: #fca5a5; }
+
+/* ---- Dettaglio partita ---- */
+.partita-dettaglio { text-align: center; }
+.partita-scontro { display: flex; align-items: center; justify-content: center; gap: 36px; margin: 24px 0; }
+.partita-lato { display: flex; flex-direction: column; align-items: center; gap: 8px; font-weight: 600; }
+.partita-centro { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.partita-risultato { font-size: 30px; }
+.partita-nota { margin-top: 10px; }
+.partita-eventi { text-align: left; margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
+.partita-eventi h4 { margin-bottom: 6px; }
+
+.partita-statistiche { text-align: left; margin-top: 18px; }
+.partita-statistiche h4 { margin-bottom: 10px; }
+.stat-riga { display: grid; grid-template-columns: 44px 1fr 44px; column-gap: 10px; row-gap: 2px; align-items: center; margin-bottom: 10px; }
+.stat-valore { font-weight: 700; font-size: 13px; }
+.stat-valore-sx { text-align: right; }
+.stat-valore-dx { text-align: left; }
+.stat-barra { grid-column: 2; height: 6px; border-radius: 4px; overflow: hidden; display: flex; background: var(--pannello-chiaro); }
+.stat-barra-sx { background: var(--accento-chiaro); }
+.stat-barra-dx { background: var(--muto); opacity: 0.55; }
+.stat-etichetta { grid-column: 1 / -1; text-align: center; font-size: 12px; color: var(--muto); margin-top: 1px; }
+
+/* ---- Notizie e Messaggi (Fase 5) ---- */
+.notizie-schermata { display: grid; grid-template-columns: 340px 1fr; gap: 16px; align-items: start; height: 100%; }
+.notizie-schede { display: flex; gap: 8px; margin-bottom: 12px; }
+.notizie-lista { display: flex; flex-direction: column; gap: 10px; }
+.notizie-filtri { display: flex; gap: 6px; flex-wrap: wrap; }
+.notizie-elenco { display: flex; flex-direction: column; border: 1px solid var(--bordo); border-radius: 12px; overflow: hidden; background: var(--pannello); max-height: 74vh; overflow-y: auto; }
+.notizie-riga {
+  display: flex; flex-direction: column; gap: 3px; text-align: left;
+  padding: 10px 12px; border: none; border-bottom: 1px solid var(--bordo);
+  background: none; color: var(--testo); cursor: pointer;
+}
+.notizie-riga:last-child { border-bottom: none; }
+.notizie-riga:hover { background: var(--pannello-chiaro); }
+.notizie-riga.attiva { background: var(--accento-chiaro); }
+.notizie-riga.non-letta .notizie-riga-titolo { font-weight: 800; }
+.notizie-obbligatorio { color: #fbbf24; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+.notizie-decisione { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin: 1rem 0; }
+.notizie-riga-titolo { font-weight: 600; font-size: 13.5px; }
+.notizie-riga-data { font-size: 11px; }
+.notizie-badge {
+  align-self: flex-start; font-size: 10px; font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase;
+  border-radius: 4px; padding: 2px 6px;
+}
+.notizie-badge-club { background: rgba(56, 189, 248, 0.16); color: #7dd3fc; }
+.notizie-badge-campionato { background: rgba(34, 197, 94, 0.16); color: #86efac; }
+.notizie-badge-premio { background: rgba(251, 191, 36, 0.18); color: #fbbf24; }
+.notizie-dettaglio-testata { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.notizie-persona { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+.notizie-testo { line-height: 1.5; }
+.notizie-azioni { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.notizia-cliccabile { cursor: pointer; }
+.notizia-cliccabile:hover { background: var(--pannello-chiaro); }
+.dash-notizie-testata { display: flex; align-items: center; justify-content: space-between; }
+.dash-notizie-testata h3 { margin: 0; }
+
+/* ---- Albo d'oro (Fase 5) ---- */
+.albo-doro { display: flex; flex-direction: column; gap: 12px; }
+.albo-testata { display: flex; align-items: center; gap: 12px; }
+.albo-testata h2 { margin: 0 0 2px; }
+.albo-voce h4 { margin: 0 0 8px; }
+.albo-podio { display: flex; flex-direction: column; gap: 4px; }
+.albo-podio-voce { display: flex; align-items: center; gap: 6px; }
+.albo-podio-voce.posizione-1 strong { color: #fbbf24; }
+.albo-podio-voce.posizione-2 strong { color: #cbd5e1; }
+.albo-podio-voce.posizione-3 strong { color: #d97706; }
+.albo-formazione-riga { display: flex; flex-wrap: wrap; gap: 8px; }
+.albo-formazione-giocatore { display: flex; align-items: center; gap: 6px; background: var(--pannello-chiaro); border-radius: 8px; padding: 4px 8px; }
+.club-trofeo-cliccabile { cursor: pointer; }
+.club-trofeo-cliccabile:hover { background: var(--pannello-chiaro); }
+
+@media (max-width: 900px) {
+  .nc-colonne, .dash-griglia, .profilo-corpo, .cal-colonne, .gruppi-attributi, .live-colonne, .club-griglia, .tattica-colonne, .live-corpo, .staff, .ufficio-categorie, .notizie-schermata, .gestione-due-colonne, .finanze-griglia-principale { grid-template-columns: 1fr; }
+  .finanze-kpi { grid-template-columns: 1fr 1fr; }
+  .shell { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; }
+  .cal-card { grid-template-columns: 110px 34px minmax(120px, 1fr) 78px 55px; }
+}
+
+@media (max-width: 560px) {
+  .finanze-kpi { grid-template-columns: 1fr; }
+  .uscite-ripartizione { align-items: flex-start; flex-direction: column; }
+  .finanza-lista > div { grid-template-columns: 82px 1fr; }
+  .finanza-lista > div strong { grid-column: 2; text-align: left; }
+}
+
+/* Replay: controlli separati dall'orologio della simulazione. */
+.live-replay-controlli { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:center; margin-top:12px; }
+.live-replay-controlli label { display:flex; align-items:center; gap:8px; font-size:13px; }
+.live-replay-controlli select { padding:6px; color:var(--testo); background:var(--pannello); border:1px solid var(--bordo); border-radius:6px; }
+.live-replay-legenda { display:flex; justify-content:space-between; gap:8px; align-items:center; margin-bottom:10px; font-size:12px; }
+.live-replay-legenda span { display:flex; align-items:center; gap:5px; }
+.live-replay-legenda i { display:inline-block; width:11px; height:11px; border-radius:50%; border:1px solid #cbd5e1; }
+.campo-2d { max-height:620px; background:#0f5132; }
+.input-compatto {
+  width: 118px;
+  min-width: 96px;
+}
+
+.contratto-nota {
+  display: block;
+  margin-top: 5px;
+  color: var(--testo-secondario, #64748b);
+}
+
+.badge-consiglio {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.consiglio-rinnovare { background: #dcfce7; color: #166534; }
+.consiglio-aspettare { background: #fef3c7; color: #92400e; }
+.consiglio-lasciare { background: #fee2e2; color: #991b1b; }
+
+.provini-risultati {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.provini-risultati span {
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: var(--sfondo-secondario, #f1f5f9);
+  font-size: 0.82rem;
+}
+
+/* ---- Revisione interfaccia: densità e struttura ispirate ai manageriali 2015 ---- */
+.contenuto {
+  max-width: none;
+  margin: 0;
+  padding: clamp(14px, 1.35vw, 24px);
+}
+
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #aab5c2 50%),
+    linear-gradient(135deg, #aab5c2 50%, transparent 50%);
+  background-position: calc(100% - 15px) 50%, calc(100% - 10px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 30px !important;
+}
+
+.tattica-fm15 { display: flex; flex-direction: column; gap: 0; }
+.tattica-testata,
+.dash-testata,
+.notizie-pagina-testata,
+.allenamento-testata {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 3px 4px 14px;
+}
+.tattica-testata h2, .dash-testata h2, .notizie-pagina-testata h2 { margin: 0; font-size: 22px; letter-spacing: -.35px; }
+.tattica-pronta {
+  padding: 6px 10px;
+  border-left: 3px solid #82b46e;
+  background: rgba(130,180,110,.1);
+  color: #b9d8aa;
+  font-size: 12px;
+  font-weight: 700;
+}
+.tattica-sottosezioni {
+  display: flex;
+  min-height: 41px;
+  padding: 0 8px;
+  margin-bottom: 12px;
+  background: linear-gradient(#2d3240, #232833);
+  border: 1px solid #414755;
+  border-radius: 3px;
+  box-shadow: 0 2px 7px rgba(0,0,0,.28);
+}
+.tattica-sottosezioni button {
+  position: relative;
+  border: 0;
+  border-right: 1px solid rgba(255,255,255,.08);
+  background: transparent;
+  color: #bdc5cf;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tattica-sottosezioni button.attiva { color: #fff; background: rgba(255,255,255,.055); }
+.tattica-sottosezioni button.attiva::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 0; height: 3px; background: #8ebd73; }
+.tattica-sottosezioni button:disabled { opacity: .48; cursor: default; }
+.tattica-sottosezioni small { display: block; font-size: 8px; text-transform: uppercase; letter-spacing: .6px; }
+
+.tattica-colonne {
+  grid-template-columns: minmax(500px, .94fr) minmax(520px, 1.06fr);
+  gap: 12px;
+}
+.tattica-campo,
+.tattica-pannello > .card {
+  border-radius: 3px;
+  border-color: #3b424e;
+  background: linear-gradient(155deg, rgba(42,48,58,.98), rgba(25,30,38,.98));
+  box-shadow: 0 4px 13px rgba(0,0,0,.25);
+}
+.tattica-campo { padding: 10px; }
+.tattica-campo .campo-svg {
+  width: auto;
+  max-width: 100%;
+  height: clamp(610px, calc(100vh - 235px), 830px);
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.3);
+}
+.tattica-riepilogo { min-height: 30px; padding: 0 3px; margin-bottom: 7px; }
+.tattica-riepilogo strong { font-size: 15px; }
+.tattica-pannello {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-content: start;
+}
+.tattica-pannello > .card:nth-child(3),
+.tattica-pannello > .card:nth-child(4) { grid-column: 1 / -1; }
+.tattica-pannello > .card:nth-child(3) { grid-row: 1; }
+.tattica-pannello > .card:nth-child(1) { grid-row: 2; grid-column: 1; }
+.tattica-pannello > .card:nth-child(2) { grid-row: 2; grid-column: 2; }
+.tattica-pannello > .card:nth-child(4) { grid-row: 3; }
+.tattica-card-etichetta {
+  display: block;
+  margin-bottom: 5px;
+  color: #91a0b0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.15px;
+}
+.tattica-panchina { max-height: 330px; }
+.tattica-riserva {
+  display: grid;
+  grid-template-columns: 39px minmax(100px, 1fr) 34px 48px minmax(170px, 1.15fr);
+  min-height: 47px;
+  gap: 9px;
+  padding: 5px 7px;
+  border-radius: 2px;
+  border-bottom-color: rgba(139,152,169,.22);
+}
+.tattica-riserva:hover { background: rgba(255,255,255,.055); }
+.tattica-riserva.attiva { outline: 1px solid #9ac47f; background: rgba(126,166,101,.14); }
+.tattica-select-ruolo { min-width: 0; width: 100%; border-radius: 2px; background-color: #202631; color: #dce3ea; border: 1px solid #434b58; padding: 6px 28px 6px 8px; font-size: 11px; }
+.tattica-anello {
+  --tono-posizione: #758392;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  background: conic-gradient(var(--colore-affinita) var(--progresso), #3e4652 0);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.12);
+}
+.tattica-anello > span {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--tono-posizione);
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: 900;
+  text-shadow: 0 1px 1px rgba(0,0,0,.45);
+}
+.ruolo-tono-POR { --tono-posizione: #b48a32; }
+.ruolo-tono-DIF { --tono-posizione: #547ca5; }
+.ruolo-tono-MED { --tono-posizione: #557f72; }
+.ruolo-tono-CEN { --tono-posizione: #83a66e; }
+.ruolo-tono-TRE { --tono-posizione: #3f785d; }
+.ruolo-tono-ATT { --tono-posizione: #aa5b5e; }
+
+/* Home: pannelli densi a due colonne, come una schermata gestionale */
+.dash-testata-club { display: flex; flex-direction: column; align-items: flex-end; color: #dfe6ed; }
+.dash-testata-club span { color: var(--muto); font-size: 12px; }
+.dash-griglia {
+  grid-template-columns: minmax(420px, 1.35fr) minmax(340px, .85fr);
+  grid-template-areas: 'partita club' 'classifica notizie';
+  gap: 12px;
+  align-items: start;
+}
+.dash-griglia > .card { border-radius: 4px; }
+.dash-prossima { grid-area: partita; min-height: 190px; background: linear-gradient(125deg, rgba(48,83,67,.72), rgba(22,27,34,.96) 62%); }
+.dash-club { grid-area: club; min-height: 190px; }
+.dash-classifica { grid-area: classifica; }
+.dash-notizie { grid-area: notizie; max-height: 620px; overflow: auto; }
+.dash-vs { width: 100%; justify-content: center; padding: 12px 0 5px; }
+.dash-vs-x { font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.dash-squadra-vs { font-size: 15px; }
+
+/* Inbox */
+.notizie-pagina { display: flex; flex-direction: column; min-height: calc(100vh - 95px); }
+.notizie-schede { margin: 0; padding: 0 8px; background: linear-gradient(#2d3240, #232833); border: 1px solid #414755; border-radius: 3px 3px 0 0; }
+.notizie-schede .btn { border: 0; border-radius: 0; min-height: 40px; background: transparent; }
+.notizie-schede .btn-primario { border-bottom: 3px solid #8ebd73; color: #fff; }
+.notizie-schermata { grid-template-columns: minmax(330px, 28%) minmax(0, 1fr); gap: 10px; flex: 1; }
+.notizie-lista { gap: 0; background: #1a2029; border: 1px solid #3b424e; }
+.notizie-filtri { padding: 8px; background: #252c37; border-bottom: 1px solid #3b424e; }
+.notizie-elenco { max-height: calc(100vh - 205px); border: 0; border-radius: 0; background: transparent; }
+.notizie-riga { min-height: 66px; border-bottom-color: rgba(139,152,169,.2); }
+.notizie-riga.attiva { background: linear-gradient(90deg, #517c64, #3f6652); color: #fff; }
+.notizie-riga.attiva .muto { color: rgba(255,255,255,.72); }
+.notizie-dettaglio { min-width: 0; }
+.notizie-dettaglio > .card { min-height: calc(100vh - 164px); border-radius: 3px; padding: clamp(20px, 2.4vw, 38px); }
+.notizie-dettaglio h3 { font-size: clamp(20px, 2vw, 28px); margin: 18px 0; }
+.notizie-testo { max-width: 880px; font-size: 15px; line-height: 1.7; }
+
+/* Allenamento: riordino visivo, senza cambiare il motore */
+.allenamento-settimana { color: #b8c3ce; background: #252c36; border: 1px solid #414957; padding: 7px 11px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.allenamento-kpi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.allenamento-kpi > div { display: grid; grid-template-columns: 1fr auto; gap: 5px 14px; padding: 14px 16px; background: linear-gradient(145deg,#242b35,#181e26); border: 1px solid #3a424e; border-top: 3px solid #789968; }
+.allenamento-kpi span, .allenamento-kpi small { color: var(--muto); font-size: 11px; }
+.allenamento-kpi strong { font-size: 21px; }
+.allenamento-kpi i { grid-column: 1 / -1; height: 4px; background: #38414c; overflow: hidden; }
+.allenamento-kpi i b { display: block; height: 100%; background: #8ebd73; }
+.allenamento-kpi .rischio { border-top-color: #aa5b5e; }
+.allenamento-layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(280px, .7fr); gap: 12px; }
+.allenamento-programma, .allenamento-note { border-radius: 3px; }
+.allenamento-programma > header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #39414c; padding-bottom: 12px; }
+.allenamento-stato { color: #b9d8aa; background: rgba(130,180,110,.1); border-left: 3px solid #82b46e; padding: 6px 9px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.allenamento-controlli { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.allenamento-controlli select { width: 100%; border-radius: 2px; min-height: 39px; }
+.allenamento-settimana-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.allenamento-settimana-grid > div { min-height: 96px; display: flex; flex-direction: column; gap: 18px; background: #252c36; border: 1px solid #3b4450; padding: 9px; }
+.allenamento-settimana-grid strong { color: #9ba7b4; font-size: 10px; letter-spacing: .7px; }
+.allenamento-settimana-grid span { font-size: 11px; line-height: 1.35; }
+.allenamento-settimana-grid .riposo { opacity: .6; }
+.allenamento-note p { line-height: 1.6; color: #c3ccd5; }
+.allenamento-note > div { display: flex; flex-direction: column; gap: 5px; margin-top: 25px; padding-top: 14px; border-top: 1px solid #39414c; }
+.allenamento-note > div span { color: var(--muto); font-size: 12px; line-height: 1.45; }
+
+@media (max-width: 1500px) {
+  .tattica-colonne { grid-template-columns: minmax(440px, .9fr) minmax(430px, 1fr); }
+  .tattica-pannello { grid-template-columns: 1fr; }
+  .tattica-pannello > .card:nth-child(1) { grid-row: 2; grid-column: auto; }
+  .tattica-pannello > .card:nth-child(2) { grid-row: 3; grid-column: auto; }
+  .tattica-pannello > .card:nth-child(3) { grid-row: 1; grid-column: auto; }
+  .tattica-pannello > .card:nth-child(4) { grid-row: 4; grid-column: auto; }
+  .tattica-riserva { grid-template-columns: 39px minmax(72px,1fr) 28px 38px minmax(140px,1.2fr); gap: 6px; }
+}
+
+@media (max-width: 900px) {
+  .dash-griglia { grid-template-columns: 1fr; grid-template-areas: 'partita' 'club' 'classifica' 'notizie'; }
+  .tattica-campo .campo-svg { height: auto; width: min(100%, 560px); }
+  .allenamento-layout, .allenamento-kpi { grid-template-columns: 1fr; }
+  .allenamento-settimana-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---- Tattiche: lista unica a sinistra, campo a destra ---- */
+.tattica-colonne {
+  grid-template-columns: minmax(500px, .9fr) minmax(480px, 1.1fr);
+  grid-template-rows: auto auto auto auto;
+  align-items: start;
+}
+.tattica-colonne > .tattica-campo { grid-column: 2; grid-row: 1 / span 4; }
+.tattica-colonne > .tattica-pannello { display: contents; }
+.tattica-pannello > .card:nth-child(3) { grid-column: 1; grid-row: 1; border-radius: 3px; }
+.tattica-pannello > .card:nth-child(1) { grid-column: 1; grid-row: 2; margin-top: 12px; }
+.tattica-pannello > .card:nth-child(2) { grid-column: 1; grid-row: 3; }
+.tattica-pannello > .card:nth-child(3) .tattica-xi { max-height: 310px; }
+.tattica-pannello > .card:nth-child(3) .tattica-riserve { max-height: 250px; }
+.tattica-pannello > .card:nth-child(3) .suggerimento { margin-bottom: 0; }
+.tattica-anello > span { background: #252d37; }
+.tattica-lista-separatore { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 8px -7px 3px; padding: 8px 8px 6px; border-top: 1px solid #46505d; border-bottom: 1px solid #39424d; background: rgba(255,255,255,.025); }
+.tattica-lista-separatore strong { font-size: 12px; text-transform: uppercase; letter-spacing: .55px; }
+.tattica-lista-separatore span { color: var(--muto); font-size: 10px; }
+.tattica-riserva-nome { min-width: 0; border: 0; background: transparent; color: inherit; padding: 0; text-align: left; font: inherit; font-weight: 600; cursor: pointer; }
+.tattica-riserva-nome:hover { color: var(--accento-chiaro); text-decoration: underline; }
+.tattica-nome-campo { cursor: pointer; text-decoration: underline; text-decoration-color: transparent; }
+.tattica-nome-campo:hover { fill: #ffffff; text-decoration-color: currentColor; }
+
+/* ---- Profilo giocatore: overview gestionale ad alta densità ---- */
+.profilo-overview-fm {
+  grid-template-columns: minmax(300px, .72fr) minmax(620px, 1.55fr);
+  gap: 10px;
+}
+.profilo-fm-hero {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 170px minmax(230px, .8fr) minmax(430px, 1.35fr);
+  grid-template-rows: auto auto auto auto;
+  align-items: start;
+  gap: 6px 18px;
+  min-height: 210px;
+  padding: 15px 18px;
+  text-align: left;
+  border-radius: 3px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--pannello) 52%, transparent), var(--pannello) 66%),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--club-primary) 72%, #090c10) 0 46px,
+      color-mix(in srgb, var(--club-secondary) 58%, #090c10) 46px 92px
+    );
+}
+.profilo-fm-hero > svg { grid-column: 1; grid-row: 1 / span 5; align-self: center; justify-self: center; filter: drop-shadow(0 8px 12px rgba(0,0,0,.35)); }
+.profilo-fm-hero > h3 { grid-column: 2; grid-row: 1; align-self: end; margin: 0; font-size: 25px; text-transform: uppercase; }
+.profilo-fm-hero > p { grid-column: 2; grid-row: 2; margin: 0; }
+.profilo-fm-hero > .profilo-ruoli { grid-column: 2; grid-row: 3; justify-content: flex-start; margin: 3px 0; }
+.profilo-fm-hero > .profilo-squadra { grid-column: 2; grid-row: 4; justify-content: flex-start; margin: 0; }
+.profilo-fm-hero > .profilo-dati { grid-column: 3; grid-row: 1 / span 2; margin: 0; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 12px; background: rgba(8,12,16,.58); border: 1px solid rgba(255,255,255,.09); }
+.profilo-fm-hero > .profilo-dati > div { border-right: 1px solid rgba(255,255,255,.1); padding-right: 8px; }
+.profilo-fm-hero > .profilo-medie { grid-column: 3; margin: 0; padding: 10px 2px 0; justify-content: space-between; }
+.profilo-fm-hero > .profilo-medie:nth-of-type(3) { grid-row: 3; }
+.profilo-fm-hero > .profilo-medie:nth-of-type(4) { grid-row: 4; }
+.profilo-fm-hero > .profilo-medie:nth-of-type(5) { grid-row: 5; }
+.profilo-fm-ruoli { grid-column: 1; grid-row: 2; border-radius: 3px; }
+.profilo-fm-ruoli > .gruppi-attributi { grid-template-columns: 1fr; gap: 0; }
+.profilo-fm-ruoli .attributo { grid-template-columns: minmax(120px,1fr) 38px 72px; padding: 5px 0; }
+.profilo-mappa-posizioni { display: block; width: 100%; margin: 4px 0 12px; background: #3d8b4e; border: 4px solid #70b36d; border-radius: 3px; }
+.profilo-mappa-posizioni rect, .profilo-mappa-posizioni line, .profilo-mappa-posizioni > circle { fill: none; stroke: rgba(232,255,235,.68); stroke-width: .55; }
+.profilo-mappa-posizioni .profilo-mappa-guida { stroke: rgba(255,255,255,.1); stroke-dasharray: 1.5 2; }
+.profilo-mappa-posizioni text { fill: #07120a; font-size: 2.6px; font-weight: 900; }
+.profilo-procontro { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--bordo); }
+.profilo-procontro > div { display: flex; flex-direction: column; gap: 5px; padding: 8px; background: rgba(255,255,255,.025); }
+.profilo-procontro > div:first-child { border-top: 3px solid #22c55e; }
+.profilo-procontro > div:last-child { border-top: 3px solid #c44747; }
+.profilo-procontro span { display: flex; justify-content: space-between; color: #b8c2cd; font-size: 11px; }
+.profilo-procontro b { color: #dfe7ef; }
+.profilo-fm-attributi { grid-column: 2; grid-row: 2; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; align-items: start; }
+.profilo-fm-attributi > .card { border-radius: 3px; padding: 13px; }
+.profilo-fm-attributi .attributo { grid-template-columns: minmax(95px,1fr) 28px; gap: 5px; padding: 3px 0; font-size: 11.5px; }
+.profilo-fm-attributi .attributo .barra { display: none; }
+.profilo-fm-attributi .attributo > strong { text-align: right; color: #d7e56a; }
+.profilo-fm-attributi h4 { padding-bottom: 7px; border-bottom: 2px solid #86b66e; font-size: 11px; text-transform: uppercase; letter-spacing: .6px; }
+
+@media (max-width: 1500px) {
+  .tattica-colonne { grid-template-columns: minmax(450px, 1fr) minmax(430px, 1fr); }
+  .profilo-overview-fm { grid-template-columns: minmax(280px,.7fr) minmax(500px,1.3fr); }
+  .profilo-fm-hero { grid-template-columns: 155px minmax(190px,.75fr) minmax(380px,1.25fr); }
+  .profilo-fm-attributi { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width: 1050px) {
+  .tattica-colonne { grid-template-columns: 1fr; }
+  .tattica-colonne > .tattica-campo { grid-column: 1; grid-row: 1; }
+  .tattica-colonne > .tattica-pannello { display: flex; grid-column: 1; grid-row: 2; }
+  .profilo-overview-fm { grid-template-columns: 1fr; }
+  .profilo-fm-hero { grid-template-columns: 145px 1fr; }
+  .profilo-fm-hero > .profilo-dati, .profilo-fm-hero > .profilo-medie { grid-column: 1 / -1; grid-row: auto; }
+  .profilo-fm-ruoli, .profilo-fm-attributi { grid-column: 1; grid-row: auto; }
+}
+
+/* ---- Tattiche: selezione FM in un solo elenco ---- */
+.tattica-selezione-card { padding:12px; }
+.tattica-selezione-testata { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; padding:0 2px 9px; border-bottom:1px solid #414a56; }
+.tattica-selezione-testata h3 { margin:0; }
+.tattica-lista-unica { max-height:clamp(430px,58vh,690px); overflow-y:auto; overscroll-behavior:contain; scrollbar-gutter:stable; }
+.tattica-lista-unica .tattica-riserva { display:grid; grid-template-columns:30px 36px minmax(80px,1fr) 82px 32px 40px minmax(105px,1fr); gap:7px; min-height:48px; align-items:center; padding:5px 7px; border-bottom:1px solid rgba(139,152,169,.2); border-radius:0; }
+.tattica-lista-unica .tattica-riserva:nth-child(even) { background:rgba(255,255,255,.018); }
+.tattica-lista-unica .stelle-giovane { font-size:14px; letter-spacing:0; }
+.tattica-stato { display:inline-grid; place-items:center; min-height:23px; padding:2px 5px; border-radius:3px; font-size:9px; font-weight:900; letter-spacing:.45px; }
+.tattica-stato.titolare { color:#e5f6dc; background:#416b50; }.tattica-stato.panchina { color:#dbeafe; background:#385774; }.tattica-stato.riserva { color:#aeb8c3; background:#343c47; }
+.tattica-ruolo-inattivo { color:#929eaa; font-size:10px; text-align:right; }
+
+@media (max-width: 1350px) {
+  .tattica-lista-unica .tattica-riserva { grid-template-columns:28px 34px minmax(72px,1fr) 74px 29px 36px minmax(92px,1fr); gap:5px; }
+}
+
+/* ---- Calendario gestionale e pagine competizione ---- */
+.pagina-testata { display:flex; align-items:center; justify-content:space-between; gap:18px; min-height:66px; padding:3px 4px 14px; }
+.pagina-testata h2 { margin:0; font-size:22px; text-transform:capitalize; }
+.calendario-comandi { display:flex; align-items:center; gap:8px; }
+.calendario-comandi strong { min-width:170px; text-align:center; text-transform:capitalize; }
+.calendario-layout { display:grid; grid-template-columns:minmax(650px,1fr) minmax(260px,.32fr); gap:12px; align-items:start; }
+.calendario-mese { padding:0; overflow:hidden; }
+.calendario-settimana, .calendario-griglia { display:grid; grid-template-columns:repeat(7,1fr); }
+.calendario-settimana strong { padding:9px; color:#aeb9c5; background:#252c36; border-right:1px solid #39424d; font-size:10px; text-align:center; text-transform:uppercase; }
+.calendario-giorno { min-width:0; min-height:112px; display:flex; flex-direction:column; gap:4px; padding:7px; color:var(--testo); background:#1d232c; border:0; border-right:1px solid #353e49; border-top:1px solid #353e49; text-align:left; cursor:pointer; }
+.calendario-giorno:hover, .calendario-giorno.selezionato { background:#2a333d; box-shadow:inset 0 0 0 1px #88af73; }
+.calendario-giorno.fuori-mese { opacity:.34; }
+.calendario-giorno.oggi > span { width:25px; height:25px; display:grid; place-items:center; border-radius:50%; background:#7da467; color:#101610; font-weight:900; }
+.calendario-giorno small { overflow:hidden; padding:3px 5px; border-left:3px solid #7699bb; background:rgba(118,153,187,.13); color:#d9e2ea; font-size:9px; text-overflow:ellipsis; white-space:nowrap; }
+.calendario-giorno .evento-contratto { border-color:#c99e4b; }.calendario-giorno .evento-promemoria { border-color:#ca6262; }.calendario-giorno .evento-amichevole { border-color:#9c7ac1; }
+.calendario-giorno-dettaglio { position:sticky; top:82px; min-height:260px; }
+.evento-dettaglio { display:flex; flex-direction:column; gap:4px; margin:9px 0; padding:10px; border-left:3px solid #7699bb; background:#252d37; }
+.evento-dettaglio span { color:var(--muto); font-size:11px; }
+.calendario-giorno-dettaglio > .btn { width:100%; margin-top:18px; }
+.competizione-hero { display:flex; align-items:center; gap:16px; margin-bottom:12px; padding:13px 16px; border-top:3px solid var(--competizione-secondary); background:linear-gradient(110deg,color-mix(in srgb,var(--competizione-primary) 68%,#151b22),#1a2028 68%); }
+.competizione-hero h2 { margin:1px 0; }.competizione-hero p { margin:0; }.competizione-selettore { margin-left:auto; min-width:240px; }
+.competizione-schede { display:flex; align-items:flex-end; gap:2px; margin:-3px 0 12px; padding:0 8px; border-bottom:1px solid #46505c; background:#252c35; }
+.competizione-schede button { min-height:39px; padding:0 17px; border:0; border-bottom:3px solid transparent; color:#aeb8c3; background:transparent; font:inherit; font-size:11px; font-weight:800; text-transform:uppercase; cursor:pointer; }
+.competizione-schede button:hover { color:#fff; background:rgba(255,255,255,.035); }
+.competizione-schede button.attiva { color:#fff; border-bottom-color:var(--competizione-secondary,#d7b65d); background:color-mix(in srgb,var(--competizione-primary,#315f48) 30%,transparent); }
+.competizione-contenuto { grid-template-columns:1fr; }
+.competizione-contenuto > div { min-width:0; }
+.campionato [hidden] { display:none !important; }
+.trofeo-png { object-fit:contain; filter:drop-shadow(0 5px 7px rgba(0,0,0,.35)); }.trofeo-fallback { display:grid; place-items:center; border-radius:50%; color:#d4b85c; background:rgba(212,184,92,.1); border:1px solid rgba(212,184,92,.35); }
+.competizione-logo { object-fit:contain; filter:drop-shadow(0 5px 8px rgba(0,0,0,.38)); }.competizione-logo-fallback { display:grid; place-items:center; border-radius:8px; color:var(--competizione-secondary); background:color-mix(in srgb,var(--competizione-primary) 72%,#151b22); border:1px solid color-mix(in srgb,var(--competizione-secondary) 55%,transparent); }
+.competizione-panorama { display:grid; grid-template-columns:.75fr 1.2fr .8fr; gap:12px; margin-top:12px; align-items:start; }
+.competizione-panorama > .card { max-height:450px; overflow:auto; }
+.competizione-xi { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; }
+.competizione-xi > div { display:grid; grid-template-columns:38px minmax(0,1fr) 28px; align-items:center; gap:6px; padding:6px; background:rgba(255,255,255,.025); }
+.competizione-overview { display:grid; grid-template-columns:minmax(270px,.65fr) minmax(480px,1.35fr); gap:12px; align-items:start; }
+.club-logo-png { display:inline-block; object-fit:contain; flex:0 0 auto; }
+.paese-bandiera { font-size:46px; line-height:1; }
+.bandiera-paese { display:inline-block; object-fit:cover; border-radius:2px; box-shadow:0 0 0 1px rgba(255,255,255,.2); vertical-align:middle; flex:0 0 auto; }
+.bandiera-paese-emoji { display:inline-block; line-height:1; vertical-align:middle; }
+.profilo-nazionalita { display:flex; align-items:center; gap:5px; flex-wrap:wrap; }
+.profilo-nazionalita .link { padding:0; }
+.coppa-overview { display:grid; gap:12px; }
+.coppa-tabellone { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:10px; align-items:start; overflow-x:auto; }
+.coppa-turno { min-width:0; }
+.coppa-turno h3, .coppa-giornata h4 { margin-top:0; }
+.coppa-partita { width:100%; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:8px; align-items:center; padding:8px 0; color:inherit; background:none; border:0; border-bottom:1px solid var(--bordo); text-align:left; cursor:pointer; }
+.coppa-partita > :last-child { justify-self:end; text-align:right; }
+.coppa-partita strong { white-space:nowrap; }
+.coppa-giornata { margin:0 0 18px; }
+.competizione-classifica-compatta, .competizione-giornata { min-width:0; }
+.competizione-classifica-compatta .mini-riga { grid-template-columns:25px minmax(0,1fr) 48px; }
+.competizione-classifica-compatta .riga-utente { margin:0 -6px; padding-left:6px; padding-right:6px; background:rgba(126,166,101,.13); }
+.competizione-vedi-tutto { margin-top:9px; padding:6px 0; font-size:11px; font-weight:800; }
+.competizione-giornata { max-height:430px; overflow:auto; }
+.competizione-giornata .cal-selettori h3 { margin:0; flex:1; }
+.competizione-giornata .cal-partita { grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr); min-height:35px; }
+.competizione-leader { grid-column:1 / -1; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.competizione-leader > .card { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:7px 12px; border-top:3px solid var(--competizione-secondary,#d7b65d); }
+.competizione-leader .pagina-eyebrow { grid-column:1 / -1; }
+.competizione-leader .link { min-width:0; font-size:14px; font-weight:800; }
+.competizione-leader strong { font-size:18px; }
+.competizione-info { grid-template-columns:minmax(280px,.65fr) minmax(470px,1.35fr); }
+.competizione-xi-campo-card { overflow:visible !important; }
+.competizione-xi-campo { display:block; width:min(100%,760px); max-height:440px; margin:12px auto 0; border:3px solid #6aaa70; }
+.competizione-xi-pedina { cursor:pointer; }
+.competizione-xi-pedina circle { fill:#4d8b67; stroke:#f3f6f7; stroke-width:.65; filter:drop-shadow(0 1px 1px rgba(0,0,0,.75)); }
+.competizione-xi-pedina.ruolo-POR circle { fill:#9a792e; }.competizione-xi-pedina.ruolo-DIF circle { fill:#426f9b; }.competizione-xi-pedina.ruolo-CEN circle { fill:#568b62; }.competizione-xi-pedina.ruolo-ATT circle { fill:#a34f54; }
+.competizione-xi-pedina text { fill:#fff; font-size:2.4px; font-weight:900; pointer-events:none; }
+.competizione-xi-pedina .competizione-xi-nome { font-size:2.7px; paint-order:stroke; stroke:#0b1511; stroke-width:.7px; stroke-linejoin:round; }
+.mini-classifica-testata, .statistica-dettaglio-testata { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.mini-classifica-testata h4, .statistica-dettaglio-testata h3 { margin:0; }
+.mini-classifica-testata .link { font-size:10px; font-weight:800; }
+.statistica-dettaglio-testata { margin-bottom:14px; }
+.tabella-scroll { max-width:100%; overflow:auto; }
+.statistica-dettaglio .tabella { min-width:850px; }
+.albo-sottoschede { display:flex; gap:2px; margin-bottom:10px; padding:0 8px; border-bottom:1px solid #46505c; background:#202731; }
+.albo-sottoschede button { min-height:38px; padding:0 16px; border:0; border-bottom:3px solid transparent; color:#aeb8c3; background:transparent; font:inherit; font-size:11px; font-weight:800; text-transform:uppercase; cursor:pointer; }
+.albo-sottoschede button.attiva { color:#fff; border-bottom-color:var(--competizione-secondary,#d7b65d); background:rgba(255,255,255,.035); }
+.record-competizione { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.record-competizione > div { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:5px 12px; padding:12px; background:#252d37; border-left:3px solid var(--competizione-secondary,#d7b65d); }
+.record-competizione strong { grid-row:1 / span 2; grid-column:2; align-self:center; font-size:24px; }
+.record-competizione small { color:var(--muto); }
+.record-gruppo + .record-gruppo { margin-top:20px; }
+.record-gruppo h4 { margin:0 0 9px; color:var(--competizione-secondary,#d7b65d); text-transform:uppercase; letter-spacing:.06em; font-size:12px; }
+.premi-competizione-lista { display:flex; flex-wrap:wrap; gap:8px; }
+.numeri-pagina { display:flex; flex-direction:column; gap:12px; }.numeri-intro, .numeri-conferma { display:flex; align-items:center; justify-content:space-between; gap:18px; }.numeri-intro p { margin:4px 0 0; }.numero-select { min-width:76px; }.numeri-conferma { position:sticky; bottom:0; padding:12px 14px; background:#202731; border:1px solid #414b58; box-shadow:0 -5px 15px rgba(0,0,0,.25); }
+
+@media (max-width: 1050px) {
+  .calendario-layout, .competizione-panorama, .competizione-overview { grid-template-columns:1fr; }
+  .competizione-leader { grid-column:1; }
+  .competizione-leader, .record-competizione { grid-template-columns:1fr; }
+  .calendario-giorno-dettaglio { position:static; }
+  .calendario-giorno { min-height:82px; }
+}
+
+/* Le evidenziazioni seguono la skin; il verde di entrate e valutazioni positive resta semantico. */
+.nc-riga.attiva, .nav-voce.attiva, .fascia-tab.attiva, .tattica-riserva.attiva,
+.ufficio-categoria.attiva, .competizione-classifica-compatta .riga-utente {
+  background: color-mix(in srgb, var(--accento) 17%, transparent);
+}
+.notizie-riga.attiva { background: color-mix(in srgb, var(--accento) 48%, #1f2733); color: #fff; }
+.tattica-sottosezioni button.attiva::after { background: var(--accento); }
+.profilo-gruppo-azioni { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin: .5rem 0; }
+.nav-conteggio { margin-left: auto; min-width: 20px; padding: 2px 6px; text-align: center; border-radius: 99px; background: var(--accento); color: var(--accento-testo); font-size: 11px; font-weight: 800; }
