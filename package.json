@@ -1,0 +1,36 @@
+{
+  "name": "presidentmanager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "motore:smoke": "node tools/motore-smoke.mjs",
+    "motore:portieri": "node tools/portieri-calibrazione.mjs",
+    "motore:golden": "node tools/harness/golden.js",
+    "harness": "node tools/harness/run.js",
+    "harness:multidivisione": "node tools/harness/multidivisione.js",
+    "replay:smoke": "node tools/replay-smoke.mjs",
+    "database:validate": "node tools/validate-database.mjs",
+    "season:smoke": "node tools/season-smoke.mjs",
+    "management:smoke": "node tools/management-smoke.mjs",
+    "economy:smoke": "node tools/economia-smoke.mjs",
+    "management:flow": "node tools/gestione-flow-smoke.mjs",
+    "serie-b:smoke": "node tools/serie-b-premi-smoke.mjs",
+    "premi:smoke": "node tools/premi-smoke.mjs",
+    "career:smoke": "node tools/career-smoke.mjs",
+    "records:smoke": "node tools/record-competizioni-smoke.mjs",
+    "contracts:smoke": "node tools/contratti-mercato-smoke.mjs",
+    "cups:smoke": "node tools/coppe-smoke.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
